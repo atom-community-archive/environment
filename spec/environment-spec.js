@@ -1,28 +1,28 @@
 "use babel";
 
-describe('Environment', () => {
+describe("Environment", () => {
   let environmentMain, environment = null;
   beforeEach(() => {
-    this.environmentMain = null;
-    this.environment = null;
+    environmentMain = null;
+    environment = null;
     waitsForPromise(() => {
-      return atom.packages.activatePackage('environment').then(pack => {
-        this.environmentMain = pack.mainModule;
+      return atom.packages.activatePackage("environment").then(pack => {
+        environmentMain = pack.mainModule;
       });
     });
   });
 
-  describe('when the environment package is activated', () => {
-    it('activates successfully', () => {
-      expect(this.environmentMain).toBeDefined();
+  describe("when the environment package is activated", () => {
+    it("activates successfully", () => {
+      expect(environmentMain).toBeDefined();
     });
 
-    fit('provides the environment service', () => {
-      expect(this.environmentMain).toBeDefined();
+    it("provides the environment service", () => {
+      expect(environmentMain).toBeDefined();
       let called = false;
       expect(environment).toBeFalsy();
-      atom.packages.serviceHub.consume('environment', '0.1.0', (e) => {
-        environment = e
+      atom.packages.serviceHub.consume("environment", "0.1.0", (e) => {
+        environment = e;
         called = true;
       });
 
