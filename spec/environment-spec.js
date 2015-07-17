@@ -51,6 +51,22 @@ describe("Environment", () => {
     it("detects that the environment needs patching", () => {
       expect(environment.shouldPatchEnvironment()).toBe(true);
     });
+
+    it("detects the user's shell", () => {
+      expect(environment.shell()).toBeDefined();
+      expect(environment.shell()).toBeTruthy();
+      expect(environment.shell()).not.toBe("");
+    });
+
+    it("launches the user's shell to patch the environment", () => {
+      spyOn(environment, "shell").andReturn("/bin/bash");
+      expect(environment.current().PATH).not.toBe("/usr/bin:/bin:/usr/sbin:/sbin");
+    });
+
+    it("launches the user's shell to patch the environment", () => {
+      spyOn(environment, "shell").andReturn("/bin/sh");
+      expect(environment.current().PATH).not.toBe("/usr/bin:/bin:/usr/sbin:/sbin");
+    });
   });
 
   describe("when atom was launched from a terminal", () => {
