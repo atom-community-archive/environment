@@ -1,6 +1,6 @@
 {
   "name": "environment",
-  "main": "./lib/environment",
+  "main": "./lib/main",
   "version": "0.1.0",
   "description": "A short description of your package",
   "keywords": [],
