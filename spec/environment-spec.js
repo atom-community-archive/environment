@@ -58,13 +58,18 @@ describe("Environment", () => {
       expect(environment.shell()).not.toBe("");
     });
 
-    it("launches the user's shell to patch the environment", () => {
+    it("launches /bin/bash to patch the environment if the user's shell is /bin/bash", () => {
       spyOn(environment, "shell").andReturn("/bin/bash");
       expect(environment.current().PATH).not.toBe("/usr/bin:/bin:/usr/sbin:/sbin");
     });
 
-    it("launches the user's shell to patch the environment", () => {
+    it("launches /bin/bash to patch the environment if the user's shell is /bin/sh", () => {
       spyOn(environment, "shell").andReturn("/bin/sh");
+      expect(environment.current().PATH).not.toBe("/usr/bin:/bin:/usr/sbin:/sbin");
+    });
+
+    it("launches /bin/zsh to patch the environment if the user's shell is /bin/zsh", () => {
+      spyOn(environment, "shell").andReturn("/bin/zsh");
       expect(environment.current().PATH).not.toBe("/usr/bin:/bin:/usr/sbin:/sbin");
     });
   });
