@@ -5,7 +5,6 @@ import {Environment} from "../lib/environment";
 describe("Environment", () => {
   let environmentMain, service = null;
   beforeEach(() => {
-    environmentMain = null;
     waitsForPromise(() => {
       return atom.packages.activatePackage("environment").then(pack => {
         environmentMain = pack.mainModule;
@@ -87,6 +86,49 @@ describe("Environment", () => {
 
     it("detects that the environment does not need patching", () => {
       expect(environment.shouldPatchEnvironment()).toBe(false);
+    });
+  });
+
+  describe("when the DYLD_INSERT_LIBRARIES variable is set", () => {
+    let environment;
+
+    beforeEach(() => {
+      let customenv = process.env;
+      customenv.PATH = "/usr/bin:/bin:/usr/sbin:/sbin";
+      customenv.DYLD_INSERT_LIBRARIES = "/path/to/some/library";
+      environment = new Environment();
+      spyOn(environment, "processenv").andReturn(customenv);
+      spyOn(environment, "platform").andReturn("darwin");
+      spyOn(environment, "shell").andReturn("/bin/sh");
+    });
+
+    it("unsets the DYLD_INSERT_LIBRARIES variable", () => {
+      expect(environment.shouldPatchEnvironment()).toBe(true);
+      expect(environment.current().DYLD_INSERT_LIBRARIES).toBeUndefined();
+      expect(environment.current().DYLD_INSERT_LIBRARIES).toBeFalsy();
+    });
+  });
+
+  describe("when the DYLD_INSERT_LIBRARIES variable is not set", () => {
+    let environment;
+
+    beforeEach(() => {
+      let customenv = process.env;
+      customenv.PATH = "/usr/bin:/bin:/usr/sbin:/sbin";
+      if (customenv.DYLD_INSERT_LIBRARIES != null) {
+        delete customenv.DYLD_INSERT_LIBRARIES;
+      }
+
+      environment = new Environment();
+      spyOn(environment, "processenv").andReturn(customenv);
+      spyOn(environment, "platform").andReturn("darwin");
+      spyOn(environment, "shell").andReturn("/bin/sh");
+    });
+
+    it("doesn't alter the DYLD_INSERT_LIBRARIES variable", () => {
+      expect(environment.shouldPatchEnvironment()).toBe(true);
+      expect(environment.current().DYLD_INSERT_LIBRARIES).toBeFalsy();
+      expect(environment.current().DYLD_INSERT_LIBRARIES).toBeUndefined();
     });
   });
 });
