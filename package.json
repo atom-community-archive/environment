@@ -30,7 +30,8 @@
   "providedServices": {
     "environment": {
       "versions": {
-        "0.1.0": "provide"
+        "0.1.0": "provide",
+        "1.0.0": "provide"
       }
     }
   }
