@@ -1,9 +1,13 @@
 {
   "name": "environment",
   "main": "./lib/main",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Environment patches the environment on a Mac if you launch Atom from Finder, Dock, Spotlight, or open.",
-  "keywords": ["environment", "osx", "mac"],
+  "keywords": [
+    "environment",
+    "osx",
+    "mac"
+  ],
   "author": "Joe Fitzgerald <jfitzgerald@pivotal.io> (http://github.com/joefitzgerald)",
   "homepage": "https://atom.io/packages/environment",
   "bugs": {
