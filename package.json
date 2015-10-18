@@ -1,7 +1,7 @@
 {
   "name": "environment",
   "main": "./lib/main",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Environment patches the environment on a Mac if you launch Atom from Finder, Dock, Spotlight, or open.",
   "keywords": [
     "environment",
