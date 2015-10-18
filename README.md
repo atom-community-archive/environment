@@ -10,7 +10,7 @@ A package for the [Atom Editor](https://atom.io) that provides a normalized envi
   "consumedServices": {
     "environment": {
       "versions": {
-        "0.1.0": "consumeEnvironment"
+        "1.0.0": "consumeEnvironment"
       }
     }
   }
