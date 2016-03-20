@@ -31,10 +31,10 @@ The environment is a hash, of the same format as that provided by `process.env`.
 
 On platforms other than Mac OS X, the environment that this package provides is identical to `process.env`.
 
-On Mac OS X, a check is made to determine whether `atom` was launched from a terminal, or if it was launched via `Dock`, `Finder`, `Spotlight`, or `open` (i.e. `launchctl` launched processes).
+On Mac OS X, a check is made to determine whether `atom` was launched from a terminal, or if it was launched via `Dock`, `Finder`, `Spotlight`, or `open` (i.e. `launchd` launched processes).
 
-If `atom` was launched by a `launchctl` launched process, the environment available to `atom` is anaemic. This is particularly problematic for packages that depend on a sane environment to function correctly (e.g. anything that launches an external process).
+If `atom` was launched by a `launchd` launched process, the environment available to `atom` is anaemic. This is particularly problematic for packages that depend on a sane environment to function correctly (e.g. anything that launches an external process).
 
 If the environment is not sane, this package will launch the user's shell (as defined in `process.env.SHELL`) and then run `env` from that shell. The resulting environment is captured and then provided to any consumer of this service.
 
-This package will also delete the `DYLD_INSERT_LIBRARIES` environment variable (if set) from the environment on OS X.
+This package is a no-op on Atom >= 1.7.0. It uses functionality built into Atom in 1.7.0+ and allows for that to function in prior versions of Atom.
