@@ -35,5 +35,11 @@
         "1.0.0": "provide"
       }
     }
+  },
+  "standard": {
+    "globals": [
+      "atom",
+      "waitsForPromise"
+    ]
   }
 }

@@ -1,11 +1,12 @@
 'use babel'
+/* eslint-env jasmine */
 
 describe('Environment', () => {
   let environmentMain = null
   let service = null
   beforeEach(() => {
     waitsForPromise(() => {
-      return atom.packages.activatePackage('environment').then(pack => {
+      return atom.packages.activatePackage('environment').then((pack) => {
         environmentMain = pack.mainModule
       })
     })
