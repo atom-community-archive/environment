@@ -1,7 +1,7 @@
 {
   "name": "environment",
   "main": "./lib/main",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Environment patches the environment for versions of Atom < 1.7.0.",
   "keywords": [
     "environment",
