@@ -1,7 +1,7 @@
 'use babel'
 /* eslint-env jasmine */
 
-import child_process from 'child_process'
+import childProcess from 'child_process'
 import environmentHelpers from '../lib/environment-helpers'
 import os from 'os'
 
@@ -122,7 +122,7 @@ describe('Environment handling', () => {
   describe('getFromShell', () => {
     describe('when things are configured properly', () => {
       beforeEach(() => {
-        spyOn(child_process, 'spawnSync').andReturn({
+        spyOn(childProcess, 'spawnSync').andReturn({
           stdout: 'FOO=BAR' + os.EOL + 'TERM=xterm-something' + os.EOL +
                   'PATH=/usr/bin:/bin:/usr/sbin:/sbin:/crazy/path'
         })
@@ -138,7 +138,7 @@ describe('Environment handling', () => {
 
     describe('when an error occurs launching the shell', () => {
       beforeEach(() => {
-        spyOn(child_process, 'spawnSync').andReturn({
+        spyOn(childProcess, 'spawnSync').andReturn({
           error: new Error('testing when an error occurs')
         })
       })
