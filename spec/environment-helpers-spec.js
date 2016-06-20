@@ -1,5 +1,4 @@
 'use babel'
-/* eslint-env jasmine */
 
 import childProcess from 'child_process'
 import environmentHelpers from '../lib/environment-helpers'

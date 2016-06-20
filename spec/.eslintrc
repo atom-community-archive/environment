@@ -1,8 +1,6 @@
 {
   "env": {
     "jasmine": true,
-  },
-  "globals": {
-    "waitsForPromise": true,
+    "atomtest": true
   }
 }
