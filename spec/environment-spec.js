@@ -1,5 +1,4 @@
 'use babel'
-/* eslint-env jasmine */
 
 describe('Environment', () => {
   let environmentMain = null
