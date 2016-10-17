@@ -2,7 +2,7 @@
   "name": "environment",
   "main": "./lib/main",
   "version": "1.2.0",
-  "description": "Environment patches the environment for versions of Atom < 1.7.0.",
+  "description": "This package is deprecated. Please use process.env directly.",
   "keywords": [
     "environment",
     "osx",
@@ -14,19 +14,15 @@
     "url": "https://github.com/atom-community/environment/issues"
   },
   "repository": "https://github.com/atom-community/environment",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "semver": "^5.1.0"
+    "grim": "^2.0.1"
   },
   "devDependencies": {
-    "babel-eslint": "^6.0.5",
-    "eslint": "^2.13.1",
-    "eslint-config-standard": "^5.3.1",
-    "eslint-plugin-promise": "^1.3.2",
-    "eslint-plugin-standard": "^1.3.2"
+    "standard": "^8.4.0"
   },
   "providedServices": {
     "environment": {
@@ -35,10 +31,6 @@
         "1.0.0": "provide"
       }
     }
-  },
-  "scripts": {
-    "test": "apm test",
-    "lint": "eslint ."
   },
   "standard": {
     "globals": [
